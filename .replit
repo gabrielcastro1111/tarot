@@ -1,0 +1,23 @@
+modules = ["nodejs-18", "bash"]
+run = "npm run dev"
+
+[nix]
+channel = "stable-24_05"
+
+[deployment]
+run = ["sh", "-c", "npm run dev"]
+
+[workflows]
+
+[[workflows.workflow]]
+name = "Start Dev Server"
+author = 31024448
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "npm run dev"
+
+[[ports]]
+localPort = 5173
+externalPort = 5173
+exposeLocalhost = true
